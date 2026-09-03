@@ -62,15 +62,7 @@ OnePiece/
 
 ## 🚀 Instalación y Ejecución
 
-Simplemente abre `index.html` en cualquier navegador web moderno (Google Chrome, Mozilla Firefox, Edge, Brave, Safari). No requiere dependencias externas ni servidores Node.js.
-
-```bash
-# Clonar el repositorio
-git clone <URL_DEL_REPOSITO>
-
-# Abrir en el navegador
-google-chrome index.html
-```
+Simplemente abre este enlace https://grandline12.netlify.app
 
 ---
 
