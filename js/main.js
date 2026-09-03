@@ -217,6 +217,22 @@ document.addEventListener('DOMContentLoaded', () => {
             user: 'Kaido de las Bestias',
             power: 'Transformación en un gigantesco Dragón Azul capaz de lanzar ráfagas de fuego, rayos y nubes voladoras.',
             weakness: 'Ataques internos que atraviesan escamas duras.'
+        },
+        {
+            name: 'Magu Magu no Mi',
+            type: 'Logia',
+            typeName: 'Logia',
+            user: 'Almirante de Flota Sakazuki (Akainu)',
+            power: 'Crea, controla y se transforma en magma incandescente con el poder ofensivo más alto conocido.',
+            weakness: 'Piedra marina y agua del océano.'
+        },
+        {
+            name: 'Pika Pika no Mi',
+            type: 'Logia',
+            typeName: 'Logia',
+            user: 'Almirante Borsalino (Kizaru)',
+            power: 'Permite desplazarse y lanzar ráfagas a la velocidad de la luz pura.',
+            weakness: 'Haki de observación avanzado y espejos deflectores.'
         }
     ];
 
@@ -702,10 +718,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        const epithetsList = [
+            'El Cazador de la Grand Line',
+            'El Demonio del Océano',
+            'La Pesadilla de la Marina',
+            'El Rey de las Sombras',
+            'El Tirador Fantasma',
+            'La Tormenta de los Mares',
+            'El Sol de la Liberación'
+        ];
+
         if (randomizeBtn) {
             randomizeBtn.addEventListener('click', () => {
                 const randomBounty = Math.floor(Math.random() * 4950000000) + 50000000;
+                const randomEpithet = epithetsList[Math.floor(Math.random() * epithetsList.length)];
                 if (inputBounty) inputBounty.value = randomBounty;
+                if (inputEpithet) inputEpithet.value = randomEpithet;
                 drawWantedPoster();
             });
         }
