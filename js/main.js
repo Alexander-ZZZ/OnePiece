@@ -217,6 +217,22 @@ document.addEventListener('DOMContentLoaded', () => {
             user: 'Kaido de las Bestias',
             power: 'Transformación en un gigantesco Dragón Azul capaz de lanzar ráfagas de fuego, rayos y nubes voladoras.',
             weakness: 'Ataques internos que atraviesan escamas duras.'
+        },
+        {
+            name: 'Magu Magu no Mi',
+            type: 'Logia',
+            typeName: 'Logia',
+            user: 'Almirante de Flota Sakazuki (Akainu)',
+            power: 'Crea, controla y se transforma en magma incandescente con el poder ofensivo más alto conocido.',
+            weakness: 'Piedra marina y agua del océano.'
+        },
+        {
+            name: 'Pika Pika no Mi',
+            type: 'Logia',
+            typeName: 'Logia',
+            user: 'Almirante Borsalino (Kizaru)',
+            power: 'Permite desplazarse y lanzar ráfagas a la velocidad de la luz pura.',
+            weakness: 'Haki de observación avanzado y espejos deflectores.'
         }
     ];
 
