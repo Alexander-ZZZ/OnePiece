@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece: La Gran Era de los Piratas | Experiencia Interactiva</title>
+    <meta name="description" content="Explora el universo de One Piece, la tripulación de los Sombrero de Paja, las Frutas del Diablo, el despertar de Nika y crea tu propio cartel de recompensa WANTED interactivo.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Pirata+One&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for pirate icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Canvas para Partículas de Viento y Brillo -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Barra de Anuncio Pirata -->
+    <div class="announcement-bar">
+        <span>🏴‍☠️ ¡BIENVENIDO A LA GRAN ERA DE LOS PIRATAS! ZARPA EN BUSCA DEL LEYENDARIO ONE PIECE 🏴‍☠️</span>
+    </div>
+
+    <!-- Header / Navegación Principal -->
+    <header class="main-header" id="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-skull-crossbones logo-icon"></i>
+                <div class="logo-text">
+                    <span class="title-main">ONE PIECE</span>
+                    <span class="title-sub">GRAND LINE CHRONICLES</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="#hero" class="nav-link active"><i class="fa-solid fa-compass"></i> Inicio</a></li>
+                    <li><a href="#tripulacion" class="nav-link"><i class="fa-solid fa-user-ninja"></i> Tripulación</a></li>
+                    <li><a href="#gear5" class="nav-link"><i class="fa-solid fa-bolt"></i> Gear 5</a></li>
+                    <li><a href="#hermandad" class="nav-link"><i class="fa-solid fa-heart"></i> Hermandad</a></li>
+                    <li><a href="#frutas" class="nav-link"><i class="fa-solid fa-apple-whole"></i> Akuma no Mi</a></li>
+                    <li><a href="#sagas" class="nav-link"><i class="fa-solid fa-map-location-dot"></i> Sagas</a></li>
+                    <li><a href="#cartel-wanted" class="nav-link btn-wanted-nav"><i class="fa-solid fa-scroll"></i> Tu Wanted</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button id="sound-toggle" class="btn-icon" title="Activar/Desactivar Ambiente Marino">
+                    <i class="fa-solid fa-volume-xmark"></i>
+                </button>
+                <button id="btn-quiz-trigger" class="btn-gold-sm">
+                    <i class="fa-solid fa-hat-cowboy"></i> Test Pirata
+                </button>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir Menú">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="hero-bg-wrapper">
+                <img src="imagenes/img2.jpg" alt="Luffy navegando hacia el horizonte con su barco pirata" class="hero-bg-img">
+                <div class="hero-overlay"></div>
+            </div>
+
+            <div class="hero-content container">
+                <div class="hero-badge animate-fade-down">
+                    <i class="fa-solid fa-anchor"></i> El Rey de los Piratas seré yo
+                </div>
+                <h1 class="hero-title animate-glow">
+                    ZARPA HACIA EL <span class="text-gold">ONE PIECE</span>
+                </h1>
+                <p class="hero-description">
+                    Adéntrate en el vasto e indomable océano de la Grand Line. Explora los secretos de la Voluntad de D., el despertar de los Dioses Antiguos y la leyenda de Monkey D. Luffy y los Sombrero de Paja.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#tripulacion" class="btn-primary">
+                        <i class="fa-solid fa-users"></i> Conocer Tripulación
+                    </a>
+                    <a href="#cartel-wanted" class="btn-secondary">
+                        <i class="fa-solid fa-scroll"></i> Crear Cartel de Recompensa
+                    </a>
+                </div>
+
+                <!-- Stats Bar -->
+                <div class="hero-stats grid-4">
+                    <div class="stat-card glass-panel">
+                        <span class="stat-number" data-target="1080">1080+</span>
+                        <span class="stat-label">Capítulos de Manga</span>
+                    </div>
+                    <div class="stat-card glass-panel">
+                        <span class="stat-number" data-target="10">10</span>
+                        <span class="stat-label">Mugiwaras Principales</span>
+                    </div>
+                    <div class="stat-card glass-panel">
+                        <span class="stat-number" data-target="3">3,000M</span>
+                        <span class="stat-label">Recompensa de Luffy</span>
+                    </div>
+                    <div class="stat-card glass-panel">
+                        <span class="stat-number">1</span>
+                        <span class="stat-label">Tesoro Legendario</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wave-separator">
+                <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.92,152.47,130.83,219,114.28,252.79,105.89,286.4,81.42,321.39,56.44Z" fill="var(--color-bg-dark)"></path>
+                </svg>
+            </div>
+        </section>
+
+
+        <!-- TRIPULACIÓN DE LOS SOMBRERO DE PAJA SECTION -->
+        <section id="tripulacion" class="section-padding tripulacion-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle"><i class="fa-solid fa-flag"></i> Los Mugiwaras</span>
+                    <h2 class="section-title">LA TRIPULACIÓN DE <span class="text-gold">SOMBRERO DE PAJA</span></h2>
+                    <p class="section-desc">Diez navegantes unidos por el destino, la lealtad inquebrantable y sus sueños insuperables.</p>
+                </div>
+
+                <!-- Filtros de Tripulación -->
+                <div class="crew-filters text-center">
+                    <button class="filter-btn active" data-filter="all">Todos los Miembros</button>
+                    <button class="filter-btn" data-filter="liderazgo">Liderazgo & Combate</button>
+                    <button class="filter-btn" data-filter="navegacion">Navegación & Apoyo</button>
+                    <button class="filter-btn" data-filter="especialistas">Especialistas</button>
+                </div>
+
+                <!-- Grid de Tarjetas de Personajes -->
+                <div class="crew-grid" id="crew-container">
+                    <!-- Javascript insertará las tarjetas dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECCIÓN DE GEAR 5 (SUN GOD NIKA) - USANDO IMG1.JPG -->
+        <section id="gear5" class="section-padding gear5-section">
+            <div class="gear5-bg-effect"></div>
+            <div class="container">
+                <div class="gear5-wrapper glass-card-epic">
+                    <div class="gear5-image-box">
+                        <div class="img-glow-ring"></div>
+                        <img src="imagenes/img1.jpg" alt="Luffy Gear 5 Dios del Sol Nika Despertar" class="gear5-img">
+                        <div class="gear5-badge animate-pulse">
+                            <i class="fa-solid fa-sun"></i> Hito Hito no Mi: Modelo Nika
+                        </div>
+                    </div>
+
+                    <div class="gear5-info-box">
+                        <span class="section-subtitle text-gold"><i class="fa-solid fa-fire"></i> El Despertar Absoluto</span>
+                        <h2 class="gear5-title">GEAR 5: <span class="text-white">DIOS DEL SOL NIKA</span></h2>
+                        <p class="gear5-desc">
+                            Conocido como el "Guerrero de la Liberación". Al despertar su Fruta del Diablo, Luffy adquiere la máxima libertad física, convirtiendo su cuerpo en goma pura capaz de alterar el entorno y hacer reír a los oprimidos al ritmo de los <strong>Tambores de la Liberación</strong>.
+                        </p>
+
+                        <!-- Selector de Transformaciones (Gears) -->
+                        <div class="gear-tabs">
+                            <button class="gear-tab-btn" data-gear="gear2">Gear 2nd</button>
+                            <button class="gear-tab-btn" data-gear="gear3">Gear 3rd</button>
+                            <button class="gear-tab-btn" data-gear="gear4">Gear 4th</button>
+                            <button class="gear-tab-btn active" data-gear="gear5">Gear 5th</button>
+                        </div>
+
+                        <div class="gear-details-box" id="gear-details-content">
+                            <!-- JS actualizará la info del Gear seleccionado -->
+                            <h4><i class="fa-solid fa-drum"></i> Tambores de la Liberación</h4>
+                            <p>El ritmo del corazón de Luffy resuena con fuerza suprema. Su cabello y ropa se vuelven blancos como las nubes y sus ojos brillan con el aura divina de Nika.</p>
+                            <div class="gear-stats-row">
+                                <div><strong>Poder:</strong> Infinito</div>
+                                <div><strong>Estilo:</strong> Dibujos Animados / Toon Physics</div>
+                                <div><strong>Haki:</strong> Conquistador Avanzado</div>
+                            </div>
+                        </div>
+
+                        <div class="gear5-actions">
+                            <button id="play-drums-btn" class="btn-drums">
+                                <i class="fa-solid fa-music"></i> Escuchar Tambores de la Liberación
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- HERMANDAD Y LORE (ASL) - USANDO IMG3.JPG -->
+        <section id="hermandad" class="section-padding hermandad-section">
+            <div class="container">
+                <div class="hermandad-grid">
+                    <div class="hermandad-content">
+                        <span class="section-subtitle"><i class="fa-solid fa-wine-glass"></i> Las Copas del Destino</span>
+                        <h2 class="section-title">HERMANOS DE SAKE: <span class="text-gold">LUFFY, ACE Y SABO</span></h2>
+                        <p class="hermandad-text">
+                            En las profundidades del Monte Colubo y el Terminal Gray, tres niños compartieron una copa de sake sellando un pacto indestructible. Ninguna tormenta en la Grand Line, ni el destino más trágico, podrá romper el lazo de la hermandad ASL.
+                        </p>
+
+                        <div class="lore-accordions">
+                            <div class="accordion-item active">
+                                <div class="accordion-header">
+                                    <h3><i class="fa-solid fa-gem"></i> La Voluntad de D.</h3>
+                                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                                </div>
+                                <div class="accordion-body">
+                                    <p>Aquellos que llevan la inicial "D." son considerados los enemigos naturales de los Nobles Mundiales (Tenryuubito). Portan la sonrisa frente a la muerte y la búsqueda constante de libertad.</p>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3><i class="fa-solid fa-cube"></i> Los Poneglyphs y el Siglo Vacío</h3>
+                                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                                </div>
+                                <div class="accordion-body">
+                                    <p>Grandes monolitos indestructibles de piedra escritos en una antigua lengua. Los Road Poneglyphs indican la ubicación exacta de Laugh Tale, la isla oculta donde se encuentra el One Piece.</p>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3><i class="fa-solid fa-crown"></i> Los Cuatro Emperadores (Yonko)</h3>
+                                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                                </div>
+                                <div class="accordion-body">
+                                    <p>Los piratas más poderosos que gobiernan el Nuevo Mundo. Con la caída de Kaido y Big Mom, la nueva era pertenece a Luffy, Shanks, Buggy y Blackbeard.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hermandad-image-wrapper">
+                        <div class="parchment-frame">
+                            <img src="imagenes/img3.jpg" alt="Luffy, Sabo y Ace de niños jugando en la playa" class="hermandad-img">
+                            <div class="parchment-caption">
+                                <span>"¡Algún día saldremos al mar y viviremos sin arrepentimientos!"</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ENCICLOPEDIA DE FRUTAS DEL DIABLO (AKUMA NO MI) -->
+        <section id="frutas" class="section-padding frutas-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle"><i class="fa-solid fa-apple-whole"></i> Tesoros del Océano</span>
+                    <h2 class="section-title">ENCICLOPEDIA DE <span class="text-gold">FRUTAS DEL DIABLO</span></h2>
+                    <p class="section-desc">Misteriosas frutas que otorgan habilidades sobrehumanas a cambio de la maldición del mar.</p>
+                </div>
+
+                <!-- Buscador y Filtros -->
+                <div class="fruit-search-bar">
+                    <div class="search-input-group">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="fruit-search" placeholder="Buscar por nombre, usuario o habilidad...">
+                    </div>
+                    <div class="fruit-type-btns">
+                        <button class="fruit-btn active" data-type="all">Todas</button>
+                        <button class="fruit-btn" data-type="Paramecia">Paramecia</button>
+                        <button class="fruit-btn" data-type="Zoan">Zoan</button>
+                        <button class="fruit-btn" data-type="Logia">Logia</button>
+                    </div>
+                </div>
+
+                <!-- Grid de Frutas -->
+                <div class="fruit-grid" id="fruit-container">
+                    <!-- JS generará las tarjetas de frutas -->
+                </div>
+            </div>
+        </section>
+
+
+        <!-- LINEA DE TIEMPO / SAGAS DE ONE PIECE -->
+        <section id="sagas" class="section-padding sagas-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle"><i class="fa-solid fa-route"></i> El Viaje Por La Grand Line</span>
+                    <h2 class="section-title">CRONOLOGÍA DE <span class="text-gold">LAS SAGAS</span></h2>
+                    <p class="section-desc">Revive la travesía desde el modesto Mar del Este hasta los confines del Nuevo Mundo.</p>
+                </div>
+
+                <div class="timeline-wrapper" id="timeline-container">
+                    <!-- Creado dinámicamente con JS -->
+                </div>
+            </div>
+        </section>
+
+
+        <!-- GENERADOR INTERACTIVO DE CARTEL WANTED -->
+        <section id="cartel-wanted" class="section-padding wanted-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle"><i class="fa-solid fa-scroll"></i> Alerta de la Marina</span>
+                    <h2 class="section-title">GENERADOR DE <span class="text-gold">CARTELES "WANTED"</span></h2>
+                    <p class="section-desc">¡Únete a la era pirata! Personaliza tu propio cartel de recompensa oficial de la Marina y descárgalo.</p>
+                </div>
+
+                <div class="wanted-generator-grid">
+                    <!-- Formulario de Configuración -->
+                    <div class="wanted-form-card glass-panel">
+                        <form id="wanted-form">
+                            <div class="form-group">
+                                <label for="pirate-name"><i class="fa-solid fa-user"></i> Nombre de Pirata:</label>
+                                <input type="text" id="pirate-name" value="ALEXANDER D. MONKEY" maxlength="25" placeholder="Ej: Monkey D. Luffy">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pirate-epithet"><i class="fa-solid fa-tag"></i> Epíteto o Apodo:</label>
+                                <input type="text" id="pirate-epithet" value="El Cazador de la Grand Line" maxlength="30" placeholder="Ej: Sombrero de Paja">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bounty-amount"><i class="fa-solid fa-coins"></i> Recompensa (Berries):</label>
+                                <input type="number" id="bounty-amount" value="1500000000" min="100" max="999999999999" step="100000">
+                                <div class="bounty-presets">
+                                    <button type="button" class="btn-preset" data-amount="30000000">30M (East Blue)</button>
+                                    <button type="button" class="btn-preset" data-amount="300000000">300M (Supernova)</button>
+                                    <button type="button" class="btn-preset" data-amount="1500000000">1.5B (Quinto Yonko)</button>
+                                    <button type="button" class="btn-preset" data-amount="3000000000">3B (Yonko)</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-image"></i> Avatar / Imagen:</label>
+                                <div class="avatar-options">
+                                    <button type="button" class="avatar-btn active" data-src="imagenes/img2.jpg">Luffy Navegando</button>
+                                    <button type="button" class="avatar-btn" data-src="imagenes/img1.jpg">Gear 5 Nika</button>
+                                    <button type="button" class="avatar-btn" data-src="imagenes/img3.jpg">ASL Hermanos</button>
+                                </div>
+                                <div class="custom-file-upload">
+                                    <label for="custom-image-upload" class="btn-gold-sm">
+                                        <i class="fa-solid fa-upload"></i> Subir Tu Propia Foto
+                                    </label>
+                                    <input type="file" id="custom-image-upload" accept="image/*" style="display:none;">
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" id="btn-randomize-wanted" class="btn-secondary">
+                                    <i class="fa-solid fa-dice"></i> Recompensa Aleatoria
+                                </button>
+                                <button type="button" id="btn-download-wanted" class="btn-primary">
+                                    <i class="fa-solid fa-download"></i> Descargar Cartel PNG
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Previsualización del Cartel Canvas -->
+                    <div class="wanted-preview-card text-center">
+                        <div class="canvas-wrapper">
+                            <canvas id="wanted-canvas" width="600" height="850"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL DE DETALLES DE PERSONAJE -->
+    <div id="crew-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content glass-card-epic">
+            <button class="modal-close" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modal-body">
+                <!-- Se llena dinámicamente con JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE QUIZ PIRATA -->
+    <div id="quiz-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content glass-card-epic quiz-modal-content">
+            <button class="modal-close" id="quiz-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="quiz-container" id="quiz-container">
+                <!-- JS renderizará el cuestionario interactivo -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <i class="fa-solid fa-skull-crossbones"></i>
+                <h3>ONE PIECE: LA GRAN ERA DE LOS PIRATAS</h3>
+                <p>"La pasión y los sueños de los hombres jamás morirán." - Gol D. Roger</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Navegación Rápida</h4>
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#tripulacion">Tripulación Sombrero de Paja</a></li>
+                    <li><a href="#gear5">Gear 5 Nika</a></li>
+                    <li><a href="#frutas">Akuma no Mi</a></li>
+                    <li><a href="#cartel-wanted">Generador Wanted</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h4>Explora el Océano</h4>
+                <div class="social-icons">
+                    <a href="#" title="Grand Line Map"><i class="fa-solid fa-compass"></i></a>
+                    <a href="#" title="Thousand Sunny"><i class="fa-solid fa-ship"></i></a>
+                    <a href="#" title="Marineford News"><i class="fa-solid fa-newspaper"></i></a>
+                    <a href="#" title="Poneglyph Secrets"><i class="fa-solid fa-scroll"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 One Piece Pirate Experience. Diseñado con pasión por la aventura y la libertad.</p>
+        </div>
+    </footer>
+
+    <!-- Main JS File -->
+    <script src="js/main.js"></script>
+</body>
+</html>
