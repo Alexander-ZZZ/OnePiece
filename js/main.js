@@ -702,10 +702,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        const epithetsList = [
+            'El Cazador de la Grand Line',
+            'El Demonio del Océano',
+            'La Pesadilla de la Marina',
+            'El Rey de las Sombras',
+            'El Tirador Fantasma',
+            'La Tormenta de los Mares',
+            'El Sol de la Liberación'
+        ];
+
         if (randomizeBtn) {
             randomizeBtn.addEventListener('click', () => {
                 const randomBounty = Math.floor(Math.random() * 4950000000) + 50000000;
+                const randomEpithet = epithetsList[Math.floor(Math.random() * epithetsList.length)];
                 if (inputBounty) inputBounty.value = randomBounty;
+                if (inputEpithet) inputEpithet.value = randomEpithet;
                 drawWantedPoster();
             });
         }
