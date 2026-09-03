@@ -74,6 +74,22 @@ body {
         radial-gradient(circle at 85% 75%, rgba(231, 76, 60, 0.05) 0%, transparent 40%);
 }
 
+/* Custom Pirate Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--color-gold-primary), var(--color-crimson));
+    border-radius: 5px;
+    border: 2px solid var(--color-bg-dark);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-primary);
+}
+
 #particle-canvas {
     position: fixed;
     top: 0;
